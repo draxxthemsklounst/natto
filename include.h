@@ -10,3 +10,8 @@
 #include "datastructures.h"
 
 #define LOG(x) std::cout << x << std::endl
+
+void searchArray();
+void sortArray();
+void hashTable();
+void fibonacci();
