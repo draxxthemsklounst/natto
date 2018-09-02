@@ -123,12 +123,14 @@ void sortArray()
 	int* temporaryArray = myFile.fileToArray(); //converts to array and returns the address
 
 	LOG("What type of sort would you like to execute?");
-	LOG("Bubble Sort (1)");
-	LOG("Selection Sort (2)");
-	LOG("Insertion Sort (3)");
+	LOG("Iterative Bubble Sort (1)");
+	LOG("Recurseive Bubble Sort (2)");
+	LOG("Selection Sort (3)");
+	LOG("Iterative Insertion Sort (4)");
+	LOG("Recursive Insertion Sort (5)");
 	std::cin >> Which;
 	switch(Which) {
-		case 1: {
+		case 1: { //iterative bubble sort
 			LOG("Sorting... ");
 			listAlgo::sortTypes sortInstance(howMany);
 			int* temp = sortInstance.bubbleSort(temporaryArray);
@@ -136,7 +138,15 @@ void sortArray()
 			std::cout<<std::endl;
 			break;
 		}
-		case 2: {
+		case 2: { //recursive bubble sort
+			LOG("Sorting... ");
+			listAlgo::sortTypes sortInstance(howMany);
+			int* temp = sortInstance.recursiveBubbleSort(temporaryArray,howMany);
+			listAlgo::DisplayIntArray( temp , howMany );
+			std::cout<<std::endl;
+			break;
+		}
+		case 3: { //selection sort
 			LOG("Sorting... ");
 			listAlgo::sortTypes sortInstance(howMany);
 			int* temp = sortInstance.selectionSort(temporaryArray);
@@ -144,7 +154,7 @@ void sortArray()
 			std::cout<<std::endl;
 			break;
 		}
-		case 3: {
+		case 4: { //iterative insertion sort
 			LOG("Sorting... ");
 			listAlgo::sortTypes sortInstance(howMany);
 			int* temp = sortInstance.insertionSort(temporaryArray);
@@ -152,7 +162,15 @@ void sortArray()
 			std::cout<<std::endl;
 			break;
 		} 
-		default: {
+		case 5: { //recursive insertion sort
+			LOG("Sorting... ");
+			listAlgo::sortTypes sortInstance(howMany);
+			int* temp = sortInstance.recursiveInsertionSort(temporaryArray,howMany,0); //the sorted index starts at array position 0
+			listAlgo::DisplayIntArray( temp , howMany );
+			std::cout<<std::endl;
+			break;
+		}
+		default: { 
 			LOG("Enter valid choice.");
 			break;
 		}

@@ -40,6 +40,18 @@ int* listAlgo::sortTypes::bubbleSort(int array[])
 		return temp;
 	}
 
+int* listAlgo::sortTypes::recursiveBubbleSort(int array [],int scopehowMany)
+{
+	
+	if (scopehowMany==1)
+		return array;
+	for(int i = 0;i<scopehowMany;i++)
+	{
+		if (array[i] > array[i+ 1])
+			swap(&array[i], &array[i+ 1]);
+	}
+	return recursiveBubbleSort(array,scopehowMany-1);
+}	
 int* listAlgo::sortTypes::selectionSort(int array[])
 	{
 		
@@ -79,6 +91,22 @@ int* listAlgo::sortTypes::insertionSort(int array[])
 		}
 	}
 	return temp;
+}
+
+int* listAlgo::sortTypes::recursiveInsertionSort(int array[],int scopehowMany,int sortedIndex)
+{
+	if(sortedIndex == scopehowMany)
+		return array;
+	
+	for(int j = 0; j<sortedIndex; j++) //loop for the "n" amount of inputs of array
+	{
+		if(array[sortedIndex] <= array[j]) {
+			swap(&array[sortedIndex],&array[j]);	
+		}
+	}
+	sortedIndex++;
+	
+	return recursiveInsertionSort(array,scopehowMany,sortedIndex);
 }
 //DESTRUCTOR working
 listAlgo::sortTypes::~sortTypes()

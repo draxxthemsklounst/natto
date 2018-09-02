@@ -28,8 +28,10 @@ public:
 		
 		void swap(int *X, int *Y);
 		int* bubbleSort(int array[]);
+		int* recursiveBubbleSort(int array[], int scopehowMany);
 		int* selectionSort(int array[]);
 		int* insertionSort(int array[]);
+		int* recursiveInsertionSort(int array[], int scopehowMany, int sortedIndex);
 	};
 
 	class searchTypes
