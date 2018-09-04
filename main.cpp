@@ -10,7 +10,6 @@ int main()
 
 void mainMenu()
 {
-	
 	bool keepGoing = true;
 	while (keepGoing)
 	{
@@ -47,7 +46,6 @@ void mainMenu()
 		std::cin >> keepGoing;
 		if (!std::cin)
 			keepGoing = 0;
-
 	}
 	
 }
@@ -73,41 +71,34 @@ void searchArray()
 
 	LOG("Would you like to execute a Linear search (1) on this list or Binary search (2)?");
 	std::cin >> Which;  //input
-	if (Which == 1)
-	{
-		int result;
-		
-		result = searchInstance.linearSearch(temporaryArray);
-		if (result == -1)
-			LOG("Value not found.");
-		else 
-		{
-			LOG("Value located at: ");
-			std::cout << result << std::endl;
+	switch(Which) {
+		case 1: {
+			int result;
+			
+			result = searchInstance.linearSearch(temporaryArray);
+			if (result == -1)
+				LOG("Value not found.");
+			else {
+				LOG("Value located at: ");
+				std::cout << result << std::endl;
+			}
+			break;
 		}
-	}
-	else if (Which == 2)
-	{
-		listAlgo::sortTypes sortInstance(howMany);
-		LOG("Sorting array... ");
-		
-		int result;
-		result = searchInstance.binarySearch(   sortInstance.bubbleSort(temporaryArray)  );//bubble sort the array in order the temporary array then return its pointer address to begin searching
-		if(result == -1)
-		{ 
-			LOG("Value not found.");
+		case 2: {
+			listAlgo::sortTypes sortInstance(howMany);
+			LOG("Sorting array... ");
+			
+			int result;
+			result = searchInstance.binarySearch(   sortInstance.bubbleSort(temporaryArray)  );//bubble sort the array in order the temporary array then return its pointer address to begin searching
+			if(result == -1)
+				LOG("Value not found.");
+			else {
+				LOG("Value located at: ");
+				LOG(result);}
+			break;
 		}
-		else
-		{
-			LOG("Value located at: ");
-			LOG(result);
-		}
+		default: LOG("Enter valid input please."); break;
 	}
-	else
-	{
-		LOG("Enter valid input please.");
-	}
-	
 }
 void sortArray()
 {
@@ -123,11 +114,11 @@ void sortArray()
 	int* temporaryArray = myFile.fileToArray(); //converts to array and returns the address
 
 	LOG("What type of sort would you like to execute?");
-	LOG("Iterative Bubble Sort (1)");
-	LOG("Recurseive Bubble Sort (2)");
-	LOG("Selection Sort (3)");
-	LOG("Iterative Insertion Sort (4)");
-	LOG("Recursive Insertion Sort (5)");
+	LOG("(1) - Iterative Bubble Sort ");
+	LOG("(2) - Recurseive Bubble Sort ");
+	LOG("(3) - Selection Sort ");
+	LOG("(4) - Iterative Insertion Sort ");
+	LOG("(5) - Recursive Insertion Sort ");
 	std::cin >> Which;
 	switch(Which) {
 		case 1: { //iterative bubble sort
@@ -249,23 +240,18 @@ void fibonacci()
 		std::vector<unsigned long long int> cache(n+1); //+1 to account for the 0 index
 		
 		for (int i = 0; i < n + 1; i++)
-		{
 			std::cout << "Fib(" << i << "): " << fibObject.fibMemo(i,cache) << std::endl;
-		}
+		
 	}
 	else if (Which == 2)
 	{
-		
-
 		std::cout << "Enter the Nth fibonacci sum you would like to calculate " << std::endl;
 		int n;
 		std::cin >> n;
 		
 		listAlgo::fibclass fibObject;
 		for (int i = 0; i < n + 1; i++)
-		{
 			std::cout << "Fib(" << i << "): " << fibObject.fib(i) << std::endl;
-		}
 	}
 }
 
