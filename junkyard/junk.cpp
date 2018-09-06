@@ -1,5 +1,4 @@
 #include <iostream>
-
 int* selectSort(int [], int);
 int* insertionSort(int[],int);
 int* recursiveInsertionSort(int[],int,int);
@@ -17,7 +16,7 @@ int main()
 	displayArray(recursiveInsertionSort(Array,howMany,0),howMany);	
 }
 
-int* mergeSort(int array[], in
+//int* mergeSort(int array[], in
 
 int* rBubbleSort(int array [], int howMany)
 {
